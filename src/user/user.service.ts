@@ -24,4 +24,12 @@ export class UserService {
   async deleteUser(id: ObjectId): Promise<User> {
     return this.userModel.findByIdAndDelete(id);
   }
+
+  async updateUser(id: ObjectId, createUserDto: CreateUserDto): Promise<User> {
+    try {
+      return this.userModel.findByIdAndUpdate(id, createUserDto, { new: true });
+    } catch (error) {
+      return error;
+    }
+  }
 }
