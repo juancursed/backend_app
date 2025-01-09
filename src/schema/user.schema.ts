@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { first } from "rxjs";
+
 
 @Schema()
 export class User extends Document {
