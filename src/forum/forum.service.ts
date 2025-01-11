@@ -6,6 +6,14 @@ import { CreateForumDto } from './dto/create-forum.dto';
 
 @Injectable()
 export class ForumService {
-    constructos(InjectModel(Forum.name) private forumModel: Model<Forum>) {}
+    constructor(@InjectModel(Forum.name) private forumModel: Model<Forum>) {}
 
+    async createForum(createForumDto: CreateForumDto): Promise<Forum> {
+        try {
+            const newForum = new this.forumModel(createForumDto);
+            return newForum.save();
+        } catch (error) {
+            throw error;
+        }
+    }
 }

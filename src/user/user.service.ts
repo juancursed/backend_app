@@ -52,6 +52,15 @@ export class UserService {
     }
   }
 
+  async findByEmail(email: string): Promise<User> {
+    try {
+      const user = await this.userModel.findOne({ email });
+      return user;
+    } catch (error) {
+      throw new InternalServerErrorException('Error fetching user');
+    }
+  }
+
   async deleteUser(id: ObjectId): Promise<User> {
     try {
       const deletedUser = await this.userModel.findByIdAndDelete(id);
