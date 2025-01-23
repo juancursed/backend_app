@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { User } from 'src/schema/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ObjectId } from 'mongoose';
+import { Public } from 'src/auth/public.decorator';
 
 @Controller('users')
 export class UserController {
@@ -18,6 +19,7 @@ export class UserController {
         return this.UserService.findOne(id);
     }
 
+    @Public()
     @Post('signup')
     async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
         const new_user = await this.UserService.create(createUserDto);
@@ -34,5 +36,10 @@ export class UserController {
         return this.UserService.deleteUser(id);
     }
 
+    @Public()
+    @Get('profile/:email')
+    async getUserByEmail(@Param('email') email: string): Promise<User> {
+        return this.UserService.findByEmail(email);
+    }
 
 }

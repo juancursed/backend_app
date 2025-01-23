@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { User } from './user.schema';
 
 @Schema()
 export class Forum extends Document {
@@ -15,11 +14,11 @@ export class Forum extends Document {
   @Prop({ required: true })
   body: string;
 
-  @Prop({ type: String }) // Agrega el campo photo
+  @Prop({ type: String })
   photo: string;
 
   @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }], default: [] })
-  responses: mongoose.ObjectId[]; // Cambiado a plural y definido como un array
+  responses: mongoose.ObjectId[]; 
 }
 
 export const ForumSchema = SchemaFactory.createForClass(Forum);
