@@ -19,6 +19,9 @@ export class Forum extends Document {
 
   @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }], default: [] })
   responses: mongoose.ObjectId[]; 
+
+  @Prop({ type: Date, default: Date.now })
+  createdAt: Date;
 }
 
 export const ForumSchema = SchemaFactory.createForClass(Forum);

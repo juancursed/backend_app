@@ -1,5 +1,5 @@
 import {IsString, IsEmail, IsBoolean, IsArray, IsOptional, IsDate, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+
 
 export class CreateForumDto {
     @IsString()
@@ -17,4 +17,7 @@ export class CreateForumDto {
 
     @IsArray()
     responses: string[];
+
+    @IsDate()
+    date: Date;
 }
