@@ -9,13 +9,16 @@ import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 
 
+
 @Module({
   imports: [
+
     ConfigModule.forRoot({
+      envFilePath: '.env',
       isGlobal: true,
     }),
 
-    MongooseModule.forRoot(process.env.DATABASE_URL),
+    MongooseModule.forRoot(process.env.DATABASE_URL || 'mongodb://localhost:27017/man_db'),
    
     UserModule,
     ForumModule,
