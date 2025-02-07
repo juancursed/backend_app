@@ -8,12 +8,15 @@ import { ConfigModule} from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 
+
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/man_db'),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+
+    MongooseModule.forRoot(process.env.DATABASE_URL),
+   
     UserModule,
     ForumModule,
     AuthModule,
