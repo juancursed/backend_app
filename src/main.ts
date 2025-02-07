@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log('DATABASE: ', process.env.DATABASE_URL);
+console.log('DATABASE: ', process.env.MONGO_URL);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -9,7 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 
 
-console.log('DATABASE: ', process.env.DATABASE_URL);
+console.log('DATABASE: ', process.env.MONGO_URL);
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ console.log('DATABASE: ', process.env.DATABASE_URL);
       isGlobal: true,
     }),
 
-    MongooseModule.forRoot(process.env.DATABASE_URL ? process.env.DATABASE_URL : 'mongodb://localhost:27017/man_db'),
+    MongooseModule.forRoot(process.env.MONGO_URL ? process.env.MONGO_URL : 'mongodb://localhost:27017/man_db'),
    
     UserModule,
     ForumModule,
