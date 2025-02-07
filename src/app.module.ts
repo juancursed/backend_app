@@ -15,7 +15,6 @@ console.log('DATABASE: ', process.env.MONGO_URL);
   imports: [
 
     ConfigModule.forRoot({
-      envFilePath: '.env',
       isGlobal: true,
     }),
 
