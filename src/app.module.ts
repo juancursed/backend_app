@@ -16,9 +16,10 @@ console.log('DATABASE: ', process.env.MONGO_URL);
 
     ConfigModule.forRoot({
       isGlobal: true,
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
     }),
 
-    MongooseModule.forRoot(process.env.MONGO_URL ? process.env.MONGO_URL : 'mongodb://localhost:27017/man_db'),
+    MongooseModule.forRoot(process.env.MONGO_URL || 'mongodb://localhost:27017/man_db'),
    
     UserModule,
     ForumModule,
